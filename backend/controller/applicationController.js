@@ -41,4 +41,5 @@ const getApplication = async (req,res)=>{
     })
 }
 
+
 module.exports = {applyJob,getApplication}
