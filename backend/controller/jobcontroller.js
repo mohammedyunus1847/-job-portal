@@ -99,4 +99,24 @@ const deleteJob= async(req,res)=>{
     })
 }
 
-module.exports = {createJob, getAllJobs,getOneJob,updateJob,deleteJob}
+const getMyJob= async (req,res)=>{
+    const job = await Job.find(
+        {
+            recruiterId:req.user.userId
+        }
+    );
+
+    if(job.length===0){
+        return res.status(404).json({
+            status:false,
+            message:"NO JOBS AVAILABLE"
+        })
+    }
+    console.log(req.user);
+    return res.status(200).json({
+        status:true,
+        data:job  
+    })
+}
+
+module.exports = {createJob, getAllJobs,getOneJob,updateJob,deleteJob,getMyJob}
