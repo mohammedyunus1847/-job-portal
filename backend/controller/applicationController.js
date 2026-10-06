@@ -11,6 +11,18 @@ const applyJob= async(req,res)=>{
         });
 
     }
+    const existingApplication = await Application.findOne({
+        user:req.user.userId,
+        Job:req.params.jobId
+    })
+
+    if(existingApplication){
+        return res.status(409).json({
+            status:false,
+            message:"YOU ALREADY CREATED APPLICATION FOR THIS JOB WAIT FOR HR REPLY"
+        })
+    }
+
     const application = await Application.create({
         user:req.user.userId,
         Job:req.params.jobId
