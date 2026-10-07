@@ -52,7 +52,7 @@ const loginUser = async(req,res)=>{
             message:"invalid credentials"
         })
     }
-     const token= jwt.sign(
+    const token= jwt.sign(
         {
             userId:user._id,
             role:user.Role
