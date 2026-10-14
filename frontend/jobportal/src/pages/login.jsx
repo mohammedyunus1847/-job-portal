@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState } from "react";
+import {Link} from "react-router-dom";
 
 function Login(){
     const [email,setEmail] = useState('');
@@ -56,6 +57,10 @@ function Login(){
             </div>
 
             <button type="submit" disabled={loading}>{loading? "Logging in....":"Login"}</button>
+
+            <p>
+                Don't Have An Account? <Link to="/register">Register</Link>
+            </p>
             
             <p>{message}</p>
             

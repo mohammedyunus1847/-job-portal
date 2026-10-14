@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {Link} from "react-router-dom"
 
 function Register(){
     const[name,setName]=useState('');
@@ -19,7 +20,7 @@ function Register(){
                 {
                     "method":"POST",
                     "headers":{
-                        "Content-Type":"appllication/json",
+                        "Content-Type": "application/json"
                     },
                     body:JSON.stringify({
                         Name:name,
@@ -31,15 +32,16 @@ function Register(){
 
             );
             const data=await response.json();
+            
             if(!response.ok){
                 throw new Error(data.message||'Registeration Failed');
             }
-            setMessage(data.message || "Registration Successsfull");
+            setMessage(data.message || "Registration Successfull");
 
             setName('');
             setEmail('');
             setPassword('');
-            setRole('');
+            setRole('jobseeker');
         }catch(error){
             setMessage(error.message || "Something Went Wrong");
         }finally{
@@ -52,7 +54,7 @@ function Register(){
             <form action="" onSubmit={handleSubmit}>
                 <div>
                     
-                    <input type="name" placeholder="Enter Your Name" value={name} onChange={(e)=>setName(e.target.value)}/>
+                    <input type="text" placeholder="Enter Your Name" value={name} onChange={(e)=>setName(e.target.value)}/>
                 </div>
 
                 <div>
@@ -74,7 +76,16 @@ function Register(){
                     </select>
                 </div>
                 
-                <button type="submit" ></button>
+                <button type="submit" disabled={loading}>
+                    {loading?"registering":"Register"}
+                </button>
+
+                <p>
+                    Already Have An Account? <Link to="/login">Login</Link>
+                </p>
+
+                <p>{message}</p>
+
             
             </form>
 
