@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/home.css"
+import {Link} from 'react-router-dom';
 
 function Home (){
     const[jobs,setJobs] = useState([]);
@@ -39,7 +40,7 @@ function Home (){
     const filteredJobs = jobs.filter((job)=>{
         return(
             job.title.toLowerCase().includes(search.toLowerCase())&&
-            job.location.toLowerCase().includes(search.toLowerCase())
+            job.location.toLowerCase().includes(location.toLowerCase())
         )
     })
 
@@ -74,15 +75,19 @@ function Home (){
                     {!loading && !error && filteredJobs.length === 0 && (
                         <p>No matching jobs found.</p>
                      )}
-
+                    
                     <div>
                         {filteredJobs.map((job)=>(
-                            <div key={job._id} className="job-card">
-                                <h3>{job.title}</h3>
-                                <p>{job.company}</p>
-                                <p>{job.location}</p>
-                                <p>{job.jobtype}</p>
-                            </div>
+                            <Link to={`/jobs/${job._id}`}>
+                                <div key={job._id} 
+                                    className="job-card">
+                                    <h3>{job.title}</h3>
+                                    <p>{job.company}</p>
+                                    <p>{job.location}</p>
+                                    <p>{job.jobtype}</p>
+                                </div>
+                            </Link>
+                            
                         ))}
                     </div>
                 </section>
