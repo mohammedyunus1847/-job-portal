@@ -6,6 +6,7 @@ function Register(){
     const[email,setEmail]=useState('');
     const[password,setPassword]=useState('');
     const[role,setRole]=useState('jobseeker');
+    
 
     const[message,setMessage]=useState('');
     const[loading,setLoading]=useState(false);
@@ -16,6 +17,7 @@ function Register(){
         setMessage("");
 
         try{
+            
             const response = await fetch("http://localhost:5000/api/auth/register",
                 {
                     "method":"POST",
