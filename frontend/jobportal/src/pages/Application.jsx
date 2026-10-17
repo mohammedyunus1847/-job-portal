@@ -45,11 +45,14 @@ function Application(){
     return(
         <div>
             <h1>myapplication</h1>
-            {loading && <P>Loading Application.....</P>}
+            {!loading && !error && applications.length === 0 && (
+                <p>You haven't applied for any jobs yet.</p>
+            )}
+            {loading && <p>Loading Application.....</p>}
 
             {error && <p>{error}</p>}
             <div>
-                {applications.map((application)=>{
+                {applications.map((application)=>(
                     <div key={application._id}>
                         <h3>
                             {application.Job?.title || "Job Title Unavailable"}
@@ -58,10 +61,17 @@ function Application(){
                            cpmpany : {application.Job?.company || "Not Available"} 
                         </p>
                         <p>
-                            Status: {application.status || "Pending"}
+                            Location : {application.job?.location || "Not Available"}
+                        </p>
+                        <p>
+                            Salary : {application.job?.salary || "Not Discolosed"}
+                        </p>
+                        <p>
+                            Status : {""}
+                            
                         </p>
                     </div>
-                })}
+                ))}
             </div>
         </div>
     )

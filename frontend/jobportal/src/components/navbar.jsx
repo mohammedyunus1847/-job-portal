@@ -12,6 +12,7 @@ function Navbar(){
                 <Link to="/">Home</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/register">Rigister</Link>
+                <Link to="/myapplication">My Application</Link>
             </div>
         </nav>
 

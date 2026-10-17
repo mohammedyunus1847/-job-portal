@@ -38,7 +38,7 @@ const applyJob= async(req,res)=>{
 const getApplication = async (req,res)=>{
     const applications = await Application.find({
         user : req.user.userId
-    }).populate("Job")
+    }).populate("Job", "title company location jobtype salary")
 
     if(applications.length===0){
         return res.status(404).json({
