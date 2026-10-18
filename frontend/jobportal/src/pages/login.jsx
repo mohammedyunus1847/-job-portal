@@ -33,6 +33,9 @@ function Login(){
                 throw new Error(data.message||"Login Failed")
             }
             localStorage.setItem("token",data.token);
+            // const payload = JSON.parse(atob(token.split(".")[1]));
+            // console.log(payload)
+            // localStorage.setItem("role",data.role);
             setMessage("Login Successfull");
            console.log(data);
            

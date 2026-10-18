@@ -5,6 +5,7 @@ import Login from "./pages/login"
 import Register from "./pages/register"
 import JobDetails from "./components/jobdetails"
 import Application from "./pages/Application"
+import Postjob from "./pages/postJob"
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
         <Route path="/register" element={<Register/>}/>
         <Route path="/jobs/:id" element={<JobDetails/>}/>
         <Route path="/myapplication" element={<Application/>}/>
+        <Route path="/post-job" element={<Postjob/>}/>
       </Routes>
     </BrowserRouter>
   )
