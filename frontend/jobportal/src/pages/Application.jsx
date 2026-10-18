@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 
 
 function Application(){
@@ -68,8 +69,10 @@ function Application(){
                         </p>
                         <p>
                             Status : {""}
+                            <span className={`status ${application.status?.toLowerCase()}`}>{application.status || "Applied"}</span>
                             
                         </p>
+                        <Link to={`/jobs/${application.Job?._id}`}>View Job</Link>
                     </div>
                 ))}
             </div>
