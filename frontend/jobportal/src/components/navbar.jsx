@@ -19,6 +19,8 @@ function Navbar(){
                 <Link to="/myapplication">My Application</Link>
                 <Link to="/post-job">Post a Job</Link>
                 <Link to="/my-jobs" >My Posted Jobs</Link>
+                <Link to="/applicants">Applicants Dashboard</Link>
+
 
             </div>
         </nav>

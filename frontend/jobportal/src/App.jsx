@@ -7,6 +7,7 @@ import JobDetails from "./components/jobdetails"
 import Application from "./pages/Application"
 import Postjob from "./pages/postJob"
 import Myjobs from "./pages/myjobs"
+import Applicants from "./pages/applicants"
 
 function App() {
   
@@ -22,6 +23,7 @@ function App() {
         <Route path="/myapplication" element={<Application/>}/>
         <Route path="/post-job" element={<Postjob/>}/>
         <Route path="/my-jobs" element={<Myjobs/>}/>
+        <Route path="/applicants" element={<Applicants/>} />
       </Routes>
     </BrowserRouter>
   )
