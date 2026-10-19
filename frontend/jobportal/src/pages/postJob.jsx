@@ -5,7 +5,7 @@ function Postjob(){
     const [company,setCompany]= useState('');
     const [location,setLocation] =useState('');
     const [salary,setSalary] =useState('');
-    const [jobtype,setJobtype]=useState('Fulltime');
+    const [jobtype,setJobtype]=useState('FullTime');
     const [description,setDescription] = useState('');
     const [skills,setSkills] = useState('');
     const [message,setMessage] = useState('');

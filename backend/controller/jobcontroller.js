@@ -63,41 +63,68 @@ const getOneJob= async(req,res)=>{
     })
 }
 
-const updateJob = async (req,res)=>{
-    const job= await Job.findByIdAndUpdate(req.params.id,req.body,
-        {
-            new:true,
-            runValidators:true
+
+const updateJob = async (req, res) => {
+    try {
+        const job = await Job.findOneAndUpdate(
+            {
+                _id: req.params.id,
+                recruiterId: req.user.userId
+            },
+            req.body,
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+
+        if (!job) {
+            return res.status(404).json({
+                status: false,
+                message: "Job not found or you are not authorized to update it"
+            });
         }
-    )
-    if(!job){
-        return res.status(404).json({
-            status:false,
-            message:"JOB NOT FOUND"
-        })
+
+        return res.status(200).json({
+            status: true,
+            data: job
+        });
+    } catch (error) {
+        return res.status(400).json({
+            status: false,
+            message: error.message
+        });
     }
+};
 
-    return res.status(200).json({
-        status:true,
-        data:job
-    })
-}
-const deleteJob= async(req,res)=>{
-    const job = await Job.findByIdAndDelete(req.params.id);
 
-    if(!job){
-        return res.status(404).json({
-            status:false,
-            message:" JOB NOT FOUND " 
+const deleteJob = async (req, res) => {
+    try {
+        const job = await Job.findOneAndDelete({
+            _id: req.params.id,
+            recruiterId: req.user.userId
         });
 
-    }
+        if (!job) {
+            return res.status(404).json({
+                status: false,
+                message: "Job not found or you are not authorized to delete it"
+            });
+        }
 
-    return res.status(200).json({
-        status:true,
-        data:job
-    })
-}
+        return res.status(200).json({
+            status: true,
+            message: "Job deleted successfully",
+            data: job
+        });
+    } catch (error) {
+        return res.status(400).json({
+            status: false,
+            message: error.message
+        });
+    }
+};
+
 
 const getMyJob= async (req,res)=>{
     const job = await Job.find(

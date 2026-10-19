@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 function Navbar(){
     const[role,setRole] =useState(localStorage.getItem("role"));
     console.log(role);
-    useEffect
+    // useEffect
     return(
         <nav className="navbar">
             <h2 className="logo">JOB FINDER</h2>
@@ -18,6 +18,8 @@ function Navbar(){
                 <Link to="/register">Rigister</Link>
                 <Link to="/myapplication">My Application</Link>
                 <Link to="/post-job">Post a Job</Link>
+                <Link to="/my-jobs" >My Posted Jobs</Link>
+
             </div>
         </nav>
 
