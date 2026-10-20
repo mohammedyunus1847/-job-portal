@@ -36,6 +36,9 @@ function Login(){
             // const payload = JSON.parse(atob(token.split(".")[1]));
             // console.log(payload)
             // localStorage.setItem("role",data.role);
+            const payload = JSON.parse(atob(data.token.split(".")[1]));
+            localStorage.setItem("role", payload.role);
+            window.dispatchEvent(new Event("authChange"));
             setMessage("Login Successfull");
            console.log(data);
            

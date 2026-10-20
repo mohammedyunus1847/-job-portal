@@ -45,7 +45,8 @@ function Application(){
 
     return(
         <div>
-            <h1>myapplication</h1>
+            <h1>My Applications</h1>
+            <p>Track the status of the jobs you've applied for.</p>
             {!loading && !error && applications.length === 0 && (
                 <p>You haven't applied for any jobs yet.</p>
             )}
