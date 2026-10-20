@@ -8,6 +8,7 @@ import Application from "./pages/Application"
 import Postjob from "./pages/postJob"
 import Myjobs from "./pages/myjobs"
 import Applicants from "./pages/applicants"
+import ProtectedRoute from "./components/protectedroute"
 
 function App() {
   
@@ -20,10 +21,28 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/jobs/:id" element={<JobDetails/>}/>
-        <Route path="/myapplication" element={<Application/>}/>
-        <Route path="/post-job" element={<Postjob/>}/>
-        <Route path="/my-jobs" element={<Myjobs/>}/>
-        <Route path="/applicants" element={<Applicants/>} />
+
+        <Route path="/myapplication" element={
+          <ProtectedRoute allowedRole="jobseeker">
+            <Application/>
+          </ProtectedRoute>
+          
+          }/>
+        <Route path="/post-job" element={
+          <ProtectedRoute allowedRole="recruiter">
+            <Postjob/>
+          </ProtectedRoute>
+          }/>
+        <Route path="/my-jobs" element={
+          <ProtectedRoute allowedRole="recruiter">
+            <Myjobs/>
+          </ProtectedRoute>
+          }/>
+        <Route path="/applicants" element={
+          <ProtectedRoute allowedRole="recruiter">
+            <Applicants/>
+          </ProtectedRoute>
+          } />
       </Routes>
     </BrowserRouter>
   )
