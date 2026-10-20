@@ -38,14 +38,24 @@ const getAllJobs = async (req,res)=>{
     if(req.query.title){
         filter.title= {$regex: req.query.title , $options:"i"};
     }
-
-    const jobs = await Job.find(filter);
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 5;
+    const skip = (page - 1) * limit;
+    const jobs = await Job.find(filter).skip(skip).limit(limit);
+    const totalJobs = await Job.countDocuments(filter);
+    const totalPages = Math.ceil(totalJobs / limit);
 
 
     return res.status(200).json({
-        status:true,
-        data:jobs
-    })
+        status: true,
+        data: jobs,
+        pagination: {
+            currentPage: page,
+            totalPages,
+            totalJobs,
+            limit
+        }
+    });
 }
 
 const getOneJob= async(req,res)=>{

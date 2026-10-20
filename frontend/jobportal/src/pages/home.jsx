@@ -8,22 +8,26 @@ function Home (){
     const[error,setError]=useState('');
     const [search,setSearch] = useState('');
     const [location,setlocation]=useState("");
+    const[page,setPage]=useState(1);
+    const [pagination,setpagination]=useState({});
 
     useEffect(()=>{
         console.log("Fetching jobs started");
         setLoading(true)
         async function Fetchjobs(){
             try{
-                const response= await fetch("http://localhost:5000/api/job");
+                const response= await fetch(`http://localhost:5000/api/job?page=${page}&limit=5`);
                
 
                 const data = await response.json();
+                console.log("Full API response:", data);
                 
 
                 if(!response.ok){
                     throw new Error(data.message||"Filed To Fetch Jobs");
                 }
                 setJobs(data.data)
+                setpagination(data.pagination);
                 console.log("Jobs stored",data.data);
             }catch(error){
                 setError(error.message || "Something Went Wrong")
@@ -35,7 +39,7 @@ function Home (){
         }
         Fetchjobs()
 
-    },[])
+    },[page])
 
     const filteredJobs = jobs.filter((job)=>{
         return(
@@ -89,6 +93,19 @@ function Home (){
                             </Link>
                             
                         ))}
+                    </div>
+                    <div>
+                        <button
+                        onClick={()=>setPage(page-1)} disabled={page===1}>Previous
+                        </button>
+
+                        <span>
+                            Page {pagination?.currentPage ?? page} of {pagination?.totalPages ?? 0}
+                        </span>
+
+                        <button onClick={()=>setPage(page+1)} disabled={page===(pagination?.totalPages ?? 0)}>
+                            Next
+                        </button>
                     </div>
                 </section>
             </section>
