@@ -1,4 +1,25 @@
 const Job= require("../models/job")
+const getSalaryValue = (salary) => {
+    if(!salary) return -1;
+
+    const value = salary.toString().trim().toUpperCase();
+
+    if(value.includes("NEGOTIABLE")) return -1;
+
+    if(value.includes("LPA")){
+        const amount = parseFloat(value.replace(/[^\d.]/g, ""));
+        return Number.isNaN(amount) ? -1 : amount *100000;
+    }
+
+    const numbers = value.match(/\d+(?:\.\d+)?/g);
+
+    if(!numbers) return -1;
+
+    return numbers.length >=2
+        ?Number(numbers[1])
+        :Number(numbers[0]);
+}
+
 
 const createJob = async(req,res)=>{
     try{
@@ -29,6 +50,7 @@ const createJob = async(req,res)=>{
 
 const getAllJobs = async (req,res)=>{
     const filter ={}
+    const sortBy = req.query.sortBy || "newest"
     if(req.query.location){
         filter.location=req.query.location
     } 
@@ -41,7 +63,34 @@ const getAllJobs = async (req,res)=>{
     const page = Number(req.query.page) || 1;
     const limit = Number(req.query.limit) || 5;
     const skip = (page - 1) * limit;
-    const jobs = await Job.find(filter).skip(skip).limit(limit);
+
+    let jobs; 
+    if(sortBy === "salary"){
+        const allJobs = await Job.find(filter);
+        console.log(
+            allJobs.map(job => ({
+                title: job.title,
+                salary: job.salary,
+                numericSalary: getSalaryValue(job.salary)
+            }))
+        );
+
+        allJobs.sort((a,b)=>{
+            const salaryA = getSalaryValue(a.salary);
+            const salaryB = getSalaryValue(b.salary);
+
+            if(salaryA === -1) return 1;
+            if(salaryB === -1) return -1;
+
+            return salaryB-salaryA
+        });
+
+        jobs=allJobs.slice(skip,skip+limit);
+    }
+    else{
+        jobs = await Job.find(filter).sort({createdAt:-1}).skip(skip).limit(limit)
+    }
+
     const totalJobs = await Job.countDocuments(filter);
     const totalPages = Math.ceil(totalJobs / limit);
 

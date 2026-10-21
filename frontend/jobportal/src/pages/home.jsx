@@ -10,13 +10,15 @@ function Home (){
     const [location,setlocation]=useState("");
     const[page,setPage]=useState(1);
     const [pagination,setpagination]=useState({});
+    const [sortBy,setSortby] = useState("newest");
+
 
     useEffect(()=>{
         console.log("Fetching jobs started");
         setLoading(true)
         async function Fetchjobs(){
             try{
-                const response= await fetch(`http://localhost:5000/api/job?page=${page}&limit=5`);
+                const response= await fetch(`http://localhost:5000/api/job?page=${page}&limit=5&sortBy=${sortBy}`);
                
 
                 const data = await response.json();
@@ -39,7 +41,7 @@ function Home (){
         }
         Fetchjobs()
 
-    },[page])
+    },[page,sortBy])
 
     const filteredJobs = jobs.filter((job)=>{
         return(
@@ -61,12 +63,18 @@ function Home (){
                     <input type="text" name="" id="" placeholder="Job Title or Skills"
                     value={search} onChange={(e)=>setSearch(e.target.value)} />
 
-                    <input type="text" placeholder="Location"  value={location} onChange={(e)=>setlocation(e.target.value)} />
+                    <input type="text" placeholder="Location"  value={location} onChange={(e)=>setlocation(e.target.value)}
+                     />
 
                     <button>Search Jobs</button>
                 </div>
                 <section>
-                    <h2>Latest Jobs</h2>
+                    <h2>Latest Jobs</h2> 
+
+                    <select value={sortBy}  onChange={(e)=>{setSortby(e.target.value); setPage(1);}}  >
+                        <option value="newest">Newest First</option>
+                        <option value="salary">Salary:High to Low</option>
+                    </select>
 
                     {loading && <p>Loading Jobs...</p>}
 
