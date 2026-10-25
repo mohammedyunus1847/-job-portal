@@ -22,6 +22,9 @@ const authMiddleware= (req,res,next)=>{
             message:"Invalid Or Expired Token Detected"
         })
     }
+    finally{
+        
+    }
 
     
 }
