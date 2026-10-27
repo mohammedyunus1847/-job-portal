@@ -24,6 +24,7 @@ const authMiddleware= (req,res,next)=>{
     }
     finally{
         console.log("executed succesfully")
+        console.log();
     }
 
     

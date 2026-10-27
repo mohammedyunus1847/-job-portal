@@ -12,8 +12,10 @@ const app = express();
 connectDb();
 
 app.use(cors());
+console.log("cors enabled");
 
 app.use(express.json())
+
 
 app.use("/api/auth",authRoutes)
 app.use("/api/job",jobROutes)
