@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="nexhireIconTitle">
+  <title id="nexhireIconTitle">NEXHIRE symbol</title>
+  <defs>
+    <linearGradient id="nexhireIconGradient" x1="15" y1="49" x2="49" y2="17" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#168BFF" />
+      <stop offset="1" stop-color="#245BFF" />
+    </linearGradient>
+  </defs>
+  <path d="M15 49V18L41 49" stroke="url(#nexhireIconGradient)" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M41 49V17" stroke="url(#nexhireIconGradient)" stroke-width="8.5" stroke-linecap="round" />
+  <path d="M33 25L41 17L49 25" stroke="url(#nexhireIconGradient)" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

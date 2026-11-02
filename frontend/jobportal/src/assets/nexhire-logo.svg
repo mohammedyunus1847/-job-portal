@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none" role="img" aria-labelledby="nexhireLogoTitle">
+  <title id="nexhireLogoTitle">NEXHIRE</title>
+  <defs>
+    <linearGradient id="nexhireLogoGradient" x1="15" y1="49" x2="49" y2="17" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#168BFF" />
+      <stop offset="1" stop-color="#245BFF" />
+    </linearGradient>
+  </defs>
+  <path d="M15 49V18L41 49" stroke="url(#nexhireLogoGradient)" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M41 49V17" stroke="url(#nexhireLogoGradient)" stroke-width="8.5" stroke-linecap="round" />
+  <path d="M33 25L41 17L49 25" stroke="url(#nexhireLogoGradient)" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="76" y="43" fill="#111827" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="1.4" textLength="150" lengthAdjust="spacingAndGlyphs">NEXHIRE</text>
+</svg>

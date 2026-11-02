@@ -1,0 +1,89 @@
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  line-height: 1;
+}
+
+.nexhire-symbol {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 10px rgba(36, 91, 255, 0.28));
+}
+
+.brand-wordmark {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.brand-logo-dark .brand-wordmark {
+  color: var(--nexhire-navy);
+}
+
+.brand-logo-light .brand-wordmark {
+  color: var(--nexhire-white);
+}
+
+.brand-logo-compact .nexhire-symbol {
+  width: 40px;
+  height: 40px;
+}
+
+.brand-logo-compact {
+  gap: 0;
+}
+
+.auth-logo {
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.auth-logo .nexhire-symbol {
+  width: 42px;
+  height: 42px;
+}
+
+.auth-logo .brand-wordmark {
+  font-size: 1.12rem;
+  letter-spacing: 0.19em;
+}
+
+.navbar .brand-logo .nexhire-symbol {
+  width: 34px;
+  height: 34px;
+}
+
+.navbar .brand-logo .brand-wordmark {
+  font-size: 1.02rem;
+  letter-spacing: 0.18em;
+}
+
+@media (max-width: 640px) {
+  .nexhire-symbol {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brand-wordmark {
+    font-size: 0.98rem;
+  }
+
+  .navbar .brand-logo .nexhire-symbol {
+    width: 30px;
+    height: 30px;
+  }
+
+  .navbar .brand-logo .brand-wordmark {
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+  }
+
+  .auth-logo .nexhire-symbol {
+    width: 38px;
+    height: 38px;
+  }
+}

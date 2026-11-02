@@ -10,7 +10,7 @@ import Myjobs from "./pages/myjobs"
 import Applicants from "./pages/applicants"
 import ProtectedRoute from "./components/protectedroute"
 import TokenExpiryHandler from "./components/tokenExpiryHandler";
-;
+
 function App() {
   
   return (
@@ -18,7 +18,8 @@ function App() {
       <TokenExpiryHandler/>
       <Navbar/>
 
-      <Routes>
+      <main className="app-main">
+        <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
@@ -45,7 +46,8 @@ function App() {
             <Applicants/>
           </ProtectedRoute>
           } />
-      </Routes>
+        </Routes>
+      </main>
     </BrowserRouter>
   )
 }

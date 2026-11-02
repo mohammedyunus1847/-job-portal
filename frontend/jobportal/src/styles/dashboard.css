@@ -1,0 +1,394 @@
+/* Shared dashboard building blocks */
+.empty-state-action {
+  margin-top: 18px;
+}
+
+.form-page {
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.form-card {
+  padding: 28px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+.form-card .form-actions {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Recruiter: posted jobs */
+.manage-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.manage-card {
+  padding: 24px;
+}
+
+.manage-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.manage-card-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.manage-card-title h2 {
+  margin-bottom: 3px;
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+}
+
+.manage-card-title p {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  overflow-wrap: anywhere;
+}
+
+.manage-card-head .badge-type {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.manage-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 16px;
+  color: var(--color-muted);
+  font-size: 0.86rem;
+}
+
+.manage-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.manage-meta svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.manage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-border);
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 22px;
+  border-top: 1px dashed var(--color-border-strong);
+}
+
+.edit-form h3 {
+  font-size: 1rem;
+}
+
+.edit-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.edit-field-full {
+  grid-column: 1 / -1;
+}
+
+.edit-form .form-actions {
+  padding-top: 4px;
+  border-top: none;
+}
+
+/* Recruiter: applicants */
+.filter-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+  padding: 20px 24px;
+}
+
+.filter-field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 240px;
+}
+
+.filter-field label {
+  color: var(--color-navy);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.filter-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 20px;
+  border-left: 1px solid var(--color-border);
+  min-width: 180px;
+}
+
+.filter-summary-label {
+  color: var(--color-subtle);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.filter-summary strong {
+  color: var(--color-navy);
+  font-size: 0.92rem;
+}
+
+.filter-summary span:last-child {
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.applicant-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.applicant-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 18px 22px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.applicant-card:hover {
+  border-color: rgba(36, 91, 255, 0.28);
+  box-shadow: var(--shadow-md);
+}
+
+.applicant-avatar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--nexhire-dark-navy) 0%,
+    var(--nexhire-navy) 100%
+  );
+  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(11, 21, 48, 0.2);
+}
+
+.applicant-info {
+  flex: 1;
+  min-width: 180px;
+}
+
+.applicant-info h3 {
+  margin-bottom: 2px;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.applicant-info p {
+  color: var(--color-muted);
+  font-size: 0.84rem;
+  overflow-wrap: anywhere;
+}
+
+.applicant-job {
+  margin-top: 4px;
+  color: var(--color-subtle);
+  font-size: 0.78rem;
+}
+
+.applicant-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.applicant-select {
+  width: auto;
+  min-width: 142px;
+  padding: 8px 12px;
+  font-size: 0.84rem;
+}
+
+/* Jobseeker: my applications */
+.application-list {
+  display: grid;
+  gap: 14px;
+}
+
+.application-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 22px 24px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.application-card:hover {
+  border-color: rgba(36, 91, 255, 0.28);
+  box-shadow: var(--shadow-md);
+}
+
+.application-main {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 240px;
+}
+
+.application-body {
+  min-width: 0;
+}
+
+.application-body h2 {
+  margin-bottom: 3px;
+  font-size: 1.04rem;
+  overflow-wrap: anywhere;
+}
+
+.application-company {
+  color: var(--color-muted);
+  font-size: 0.86rem;
+  overflow-wrap: anywhere;
+}
+
+.application-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 9px;
+  color: var(--color-subtle);
+  font-size: 0.8rem;
+}
+
+.application-side {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 760px) {
+  .form-grid,
+  .edit-form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .filter-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .filter-summary {
+    padding-left: 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+    border-left: none;
+  }
+
+  .application-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .application-side {
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .applicant-controls {
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+@media (max-width: 640px) {
+  .form-card {
+    padding: 20px;
+  }
+
+  .manage-card {
+    padding: 18px;
+  }
+
+  .manage-actions .btn {
+    flex: 1;
+  }
+
+  .filter-card {
+    padding: 16px;
+  }
+
+  .applicant-card {
+    padding: 16px;
+  }
+
+  .application-card {
+    padding: 18px;
+  }
+
+  .application-side .btn {
+    flex: 1;
+  }
+}

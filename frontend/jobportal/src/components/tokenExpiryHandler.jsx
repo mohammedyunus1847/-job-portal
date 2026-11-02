@@ -33,7 +33,7 @@ function TokenExpiryHandler(){
                     navigate("/login",{replace:true})
                 },remaingTime)
             }
-            catch(error){
+            catch{
                 localStorage.removeItem("token");
                 localStorage.removeItem("role");
                 window.dispatchEvent(new Event("authChange"));
