@@ -9,11 +9,13 @@ import Postjob from "./pages/postJob"
 import Myjobs from "./pages/myjobs"
 import Applicants from "./pages/applicants"
 import ProtectedRoute from "./components/protectedroute"
-
+import TokenExpiryHandler from "./components/tokenExpiryHandler";
+;
 function App() {
   
   return (
     <BrowserRouter>
+      <TokenExpiryHandler/>
       <Navbar/>
 
       <Routes>

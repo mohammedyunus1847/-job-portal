@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { replace, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function TokenExpiryHandler(){
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ function TokenExpiryHandler(){
                 const payload = JSON.parse(atob(token.split(".")[1]));
 
                 const expiresAt = payload.exp * 1000;
-                const remaingTime = expiresAt = Date.now();
+                const remaingTime = expiresAt - Date.now();
 
                 if(remaingTime <=0){
                     localStorage.removeItem("token");
