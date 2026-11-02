@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../styles/home.css"
 import {Link} from 'react-router-dom';
 
+
 function Home (){
     const[jobs,setJobs] = useState([]);
     const[loading,setLoading]=useState(false);
@@ -18,11 +19,12 @@ function Home (){
 
     useEffect(()=>{
         console.log("Fetching jobs started");
+        setError("");
         setLoading(true)
         async function Fetchjobs(){
             try{
                
-                const response= await fetch(`http://localhost:5000/api/job?page=${page}&limit=5&sortBy=${sortBy}&title=${encodeURIComponent(searchquery)}&location=${encodeURIComponent(locationquery)}`);
+                const response= await fetch(`${import.meta.env.VITE_API_URL}/api/job?page=${page}&limit=5&sortBy=${sortBy}&title=${encodeURIComponent(searchquery)}&location=${encodeURIComponent(locationquery)}`);
                
 
                 const data = await response.json();
@@ -81,16 +83,12 @@ function Home (){
 
                     {error && <p>{error}</p>}
 
-                    {!loading && !error &&jobs.length ===0 && (
-                        <p>No Jobs Available Right Now</p>
-                    ) }
-
                     {!loading && !error && jobs.length === 0 && (
                         <p>No matching jobs found.</p>
                      )}
                     
                     <div>
-                        {jobs.map((job)=>(
+                        {!loading && jobs.map((job)=>(
                             <Link to={`/jobs/${job._id}`}>
                                 <div key={job._id} 
                                     className="job-card">
@@ -104,15 +102,21 @@ function Home (){
                         ))}
                     </div>
                     <div>
-                        <button
-                        onClick={()=>setPage(page-1)} disabled={page===1}>Previous
+                       <button
+                            onClick={() => setPage(page - 1)}
+                            disabled={loading || page <= 1}
+                        >
+                            Previous
                         </button>
 
                         <span>
                             Page {pagination?.currentPage ?? page} of {pagination?.totalPages ?? 0}
                         </span>
 
-                        <button onClick={()=>setPage(page+1)} disabled={page===(pagination?.totalPages ?? 0)}>
+                        <button
+                            onClick={() => setPage(page + 1)}
+                            disabled={loading || page >= (pagination?.totalPages ?? 0)}
+                        >
                             Next
                         </button>
                     </div>
