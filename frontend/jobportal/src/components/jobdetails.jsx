@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 
 function JobDetails(){
+    const API_URL = import.meta.env.VITE_API_URL;
     const {id} = useParams();
 
     const[job ,setJob]=useState(null);
@@ -13,7 +14,7 @@ function JobDetails(){
         async function Fetchjob(){
             try{
                 setLoading(true);
-                const response= await fetch(`http://localhost:5000/api/job/${id}`);
+                const response= await fetch(`${API_URL}/api/job/${id}`);
 
                 const data = await response.json();
 

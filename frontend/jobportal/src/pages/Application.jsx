@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 
 function Application(){
+    const API_URL = import.meta.env.VITE_API_URL;
     const [applications,setApplication] = useState([]);
     const [loading,setLoading] = useState(false);
     const [error,setError] = useState('');
@@ -18,7 +19,7 @@ function Application(){
                     throw new Error("Please Login To View Your Application")
                 }
 
-                const response = await fetch('http://localhost:5000/api/application',
+                const response = await fetch(`${API_URL}/api/application`,
                     {
                         headers:{
                             Authorization:`Bearer ${token}`

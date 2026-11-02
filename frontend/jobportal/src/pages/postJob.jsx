@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 function Postjob(){
+    const API_URL = import.meta.env.VITE_API_URL;
     const [title,setTitle] = useState('');
     const [company,setCompany]= useState('');
     const [location,setLocation] =useState('');
@@ -19,7 +20,7 @@ function Postjob(){
                 throw new Error("Please Login as a reqruiter first")
             }
 
-            const response = await fetch ("http://localhost:5000/api/job",{
+            const response = await fetch (`${API_URL}/api/job`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",

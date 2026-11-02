@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 
 
 function Home (){
+    const API_URL = import.meta.env.VITE_API_URL;
     const[jobs,setJobs] = useState([]);
     const[loading,setLoading]=useState(false);
     const[error,setError]=useState('');
@@ -24,7 +25,7 @@ function Home (){
         async function Fetchjobs(){
             try{
                
-                const response= await fetch(`${import.meta.env.VITE_API_URL}/api/job?page=${page}&limit=5&sortBy=${sortBy}&title=${encodeURIComponent(searchquery)}&location=${encodeURIComponent(locationquery)}`);
+                const response= await fetch(`${API_URL}/api/job?page=${page}&limit=5&sortBy=${sortBy}&title=${encodeURIComponent(searchquery)}&location=${encodeURIComponent(locationquery)}`);
                
 
                 const data = await response.json();

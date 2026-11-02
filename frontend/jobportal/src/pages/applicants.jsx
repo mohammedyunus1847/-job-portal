@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 
 function Applicants(){
+    const API_URL = import.meta.env.VITE_API_URL;
     const[jobs,setJobs]=useState([]);
     const[selectedjob,setSelectedjo]=useState("")
     const[applicants,setApplicants] = useState([]);
@@ -18,7 +19,7 @@ function Applicants(){
                         throw new Error ("Please Login as Recruiter ");
                     }
 
-                    const response = await fetch ("http://localhost:5000/api/job/myjobs",{
+                    const response = await fetch (`${API_URL}/api/job/myjobs`,{
                         headers:{
                             Authorization:`Bearer ${token}`,
                         }

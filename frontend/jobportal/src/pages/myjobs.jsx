@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
 function Myjobs(){
+    const API_URL = import.meta.env.VITE_API_URL;
     const[jobs,setJobs] = useState([]);
     const[loading,setLoading] = useState(false);
     const[error,setError] = useState('');
@@ -37,7 +38,7 @@ function Myjobs(){
                 throw new Error("Please Login as a reqruiter first")
                 }
 
-                const response = await fetch( "http://localhost:5000/api/job/myjobs",
+                const response = await fetch(`${API_URL}/api/job/myjobs`,
                     {
                         headers:{
                             Authorization : `Bearer ${token}`
