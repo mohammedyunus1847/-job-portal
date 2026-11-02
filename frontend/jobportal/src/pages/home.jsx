@@ -21,6 +21,7 @@ function Home (){
         setLoading(true)
         async function Fetchjobs(){
             try{
+               
                 const response= await fetch(`http://localhost:5000/api/job?page=${page}&limit=5&sortBy=${sortBy}&title=${encodeURIComponent(searchquery)}&location=${encodeURIComponent(locationquery)}`);
                
 

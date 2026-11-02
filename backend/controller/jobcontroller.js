@@ -52,7 +52,10 @@ const getAllJobs = async (req,res)=>{
     const filter ={}
     const sortBy = req.query.sortBy || "newest"
     if(req.query.location){
-        filter.location=req.query.location
+        filter.location= {
+            $regex:req.query.location,
+            $options:"i"
+        };
     } 
     if (req.query.jobtype){
         filter.jobtype=req.query.jobtype
@@ -60,6 +63,7 @@ const getAllJobs = async (req,res)=>{
     if(req.query.title){
         filter.title= {$regex: req.query.title , $options:"i"};
     }
+    
     const page = Number(req.query.page) || 1;
     const limit = Number(req.query.limit) || 5;
     const skip = (page - 1) * limit;
