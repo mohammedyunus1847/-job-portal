@@ -11,6 +11,9 @@ function Home (){
     const[page,setPage]=useState(1);
     const [pagination,setpagination]=useState({});
     const [sortBy,setSortby] = useState("newest");
+    const [searchquery,setSearchquery] = useState("");
+    const [locationquery,setLocationquery] = useState("");
+
 
 
     useEffect(()=>{
@@ -18,7 +21,7 @@ function Home (){
         setLoading(true)
         async function Fetchjobs(){
             try{
-                const response= await fetch(`http://localhost:5000/api/job?page=${page}&limit=5&sortBy=${sortBy}`);
+                const response= await fetch(`http://localhost:5000/api/job?page=${page}&limit=5&sortBy=${sortBy}&title=${encodeURIComponent(searchquery)}&location=${encodeURIComponent(locationquery)}`);
                
 
                 const data = await response.json();
@@ -41,14 +44,7 @@ function Home (){
         }
         Fetchjobs()
 
-    },[page,sortBy])
-
-    const filteredJobs = jobs.filter((job)=>{
-        return(
-            job.title.toLowerCase().includes(search.toLowerCase())&&
-            job.location.toLowerCase().includes(location.toLowerCase())
-        )
-    })
+    },[page,sortBy,searchquery,locationquery])
 
     return(
         <div>
@@ -66,7 +62,11 @@ function Home (){
                     <input type="text" placeholder="Location"  value={location} onChange={(e)=>setlocation(e.target.value)}
                      />
 
-                    <button>Search Jobs</button>
+                    <button onClick={()=>{
+                        setSearchquery(search);
+                        setLocationquery(location);
+                        setPage(1);
+                    }}>Search Jobs</button>
                 </div>
                 <section>
                     <h2>Latest Jobs</h2> 
@@ -84,12 +84,12 @@ function Home (){
                         <p>No Jobs Available Right Now</p>
                     ) }
 
-                    {!loading && !error && filteredJobs.length === 0 && (
+                    {!loading && !error && jobs.length === 0 && (
                         <p>No matching jobs found.</p>
                      )}
                     
                     <div>
-                        {filteredJobs.map((job)=>(
+                        {jobs.map((job)=>(
                             <Link to={`/jobs/${job._id}`}>
                                 <div key={job._id} 
                                     className="job-card">
