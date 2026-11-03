@@ -36,7 +36,7 @@ function Postjob() {
                     title,
                     company,
                     location,
-                    salary: Number(salary),
+                    salary: salary.trim(),
                     jobtype,
                     description,
                     skills: skills

@@ -77,6 +77,10 @@ function Navbar() {
                             Home
                         </NavLink>
 
+                        <NavLink to="/about" className={navLinkClass}>
+                            About
+                        </NavLink>
+
                         {isJobseeker && (
                             <NavLink to="/myapplication" className={navLinkClass}>
                                 My Applications

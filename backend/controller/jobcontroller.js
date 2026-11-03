@@ -41,6 +41,7 @@ const createJob = async(req,res)=>{
     })
     }
     catch(error){
+        console.log("create job error",error);
         return res.status(400).json({
             status:false,
             message:"Something Went Wrong"
