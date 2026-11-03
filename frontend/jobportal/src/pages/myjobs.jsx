@@ -109,7 +109,7 @@ function Myjobs() {
                 throw new Error("Please Login as a reqruiter first");
             }
             const response = await fetch(
-                `http://localhost:5000/api/job/${jobId}`,
+                `${import.meta.env.VITE_API_URL}/api/job/${jobId}`,
                 {
                     method: "DELETE",
                     headers: {
@@ -144,7 +144,7 @@ function Myjobs() {
             }
 
             const response = await fetch(
-                `http://localhost:5000/api/job/${editingJobId}`,
+                `${import.meta.env.VITE_API_URL}/api/job/${editingJobId}`,
                 {
                     method: "PUT",
                     headers: {

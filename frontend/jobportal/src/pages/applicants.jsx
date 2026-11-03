@@ -84,7 +84,7 @@ function Applicants() {
                 }
 
                 const response = await fetch(
-                    `http://localhost:5000/api/application/job/${selectedjob}`,
+                    `${import.meta.env.VITE_API_URL}/api/application/job/${selectedjob}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -120,7 +120,7 @@ function Applicants() {
             }
 
             const response = await fetch(
-                `http://localhost:5000/api/application/${applicationId}`,
+                `${import.meta.env.VITE_API_URL}/api/application/${applicationId}`,
                 {
                     method: "PATCH",
                     headers: {
