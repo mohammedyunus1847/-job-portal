@@ -5,6 +5,7 @@ function BrandLogo({ variant = "dark", compact = false, className = "" }) {
     const gradientId = `nexhire-gradient-${useId().replace(/:/g, "")}`;
     const variantClass =
         variant === "light" ? "brand-logo-light" : "brand-logo-dark";
+    const compactClass = compact ? "brand-logo-compact" : "";
 
     return (
         <span
