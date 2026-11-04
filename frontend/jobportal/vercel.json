@@ -4,5 +4,16 @@
       "source": "/(.*)",
       "destination": "/"
     }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self' https://portfolio-yunus-8415.vercel.app https://portfolio-db2j8okg7-yunus-8415.vercel.app http://localhost:5173 http://127.0.0.1:5173 http://localhost:4173 http://127.0.0.1:4173"
+        }
+      ]
+    }
   ]
 }

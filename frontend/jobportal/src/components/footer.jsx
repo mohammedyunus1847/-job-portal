@@ -41,7 +41,7 @@ const founderLinks = [
     },
     {
         label: "Portfolio",
-        href: "https://portfolio-db2j8okg7-yunus-8415.vercel.app",
+        href: "https://portfolio-two-rust-83.vercel.app/",
         icon: (
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
                 <circle
